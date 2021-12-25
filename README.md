@@ -16,15 +16,15 @@ Like
 
 'table' => 'invoices'
 
-'field'=>'invoice_id' [Default 'id']
+'field'=>'invoice_id' [Default 'id'] [Optional]
 
 'length' => 12
 
-'prefix'=>'Inv-' [Default '']
+'prefix'=>'Inv-' [Default ''] [Optional]
 
-'suffix'=>date('/m/y') [Default '']
+'suffix'=>date('/m/y') [Default ''] [Optional]
  
-'reset_on_change'=>false[ Default false]
+'reset_on_change'=>false[ Default false] [Optional]
 
 uniqueId=000001`
 
@@ -122,84 +122,86 @@ reset_on_prefix_change = Optional, default false. If you want to reset id from 1
 
 Example: 01
 
-$config = [
+`$config = [
     'table' => 'todos',
     'length' => 6,
     'prefix' => date('y')
     'suffix' => ''
-];
+];`
 
-// now use it
+`// now use it
 $id = UniqueIdGenerator::generate($config);
+`
+### _// use within single line code_
 
-// use within single line code
-Example 01: Only unique id/code with out Prefix, Suffix
-$id = UniqueIdGenerator::generate(['table' => 'todos', 'length' => 6]);
+**Example 01: Only unique id/code with out Prefix, Suffix**
 
-// output: 000001, 0000002
+`$id = UniqueIdGenerator::generate(['table' => 'todos', 'length' => 6]);
+// output: 000001, 0000002`
  
 
-Example 02: INV-000001 for prefix string. Your field must be varchar.
+**Example 02: INV-000001 for prefix string. Your field must be varchar.**
 
-$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'prefix' =>'INV-']);
-//output: INV-000001 ,INV-000002
+`$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'prefix' =>'INV-']);
+//output: INV-000001 ,INV-000002`
 
-Example 03: 000001/2021 for suffix string. Your field must be varchar.
+**Example 03: 000001/2021 for suffix string. Your field must be varchar.**
 
-$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'suffix' =>date('/Y')]);
+`$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'suffix' =>date('/Y')]);
 //output: 00001/2021, 00002/2021
+`
 
-Example 04: INV-000001/2021 for prefix string. Your field must be varchar.
+**Example 04: INV-000001/2021 for prefix string. Your field must be varchar.**
 
-$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 14,'prefix' =>'INV-', 'suffix' =>date('/Y')]);
-//output: INV-00001/2021, INV-00002/2021
+`$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 14,'prefix' =>'INV-', 'suffix' =>date('/Y')]);
+//output: INV-00001/2021, INV-00002/2021`
  
 
-Example 05: By default, this package works on the ID field. You can set another field to generate an ID. Make sure your **selected field must be unique** and also **proper data type**.
+**Example 05: By default, this package works on the ID field. You can set another field to generate an ID. Make sure your **selected field must be unique** and also **proper data type**.**
 
-$id = UniqueIdGenerator::generate(['table' => 'products','field'=>'pid', 'length' => 6, 'prefix' =>date('P')]);
+`$id = UniqueIdGenerator::generate(['table' => 'products','field'=>'pid', 'length' => 6, 'prefix' =>date('P')]);
 //output: P00001
- 
+ `
 
-Example 06: By default, this package won't reset your ID when you change your prefix of ID. 
+**_Example 06: By default, this package won't reset your ID when you change your prefix of ID. 
 If you want to reset your ID from 1 on every prefix changes then pass reset_on_change => 'prefix'
 If you want to reset your ID from 1 on every suffix changes then pass reset_on_change => 'suffix'
-If you want to reset your ID from 1 on every prefix and suffix (both) changes then pass reset_on_change => 'both'
+If you want to reset your ID from 1 on every prefix and suffix (both) changes then pass reset_on_change => 'both'**_
 
-Example 07:
-**Reset Prefix ID yearly**
+**Example 07:
+**Reset Prefix ID yearly****
 
-$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'prefix' =>date('y'), 'reset_on_change'=>'prefix']);
+`$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'prefix' =>date('y'), 'reset_on_change'=>'prefix']);
 //output: 2000000001,2000000002,2000000003
-//output: 2100000001,2100000002,2100000003
+//output: 2100000001,2100000002,2100000003`
 
-Example 08:
-Reset ID monthly
+**Example 08:
+Reset ID monthly**
 
-$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'prefix' =>date('ym'),, 'reset_on_change'=>'prefix']]);
+`$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'prefix' =>date('ym'),, 'reset_on_change'=>'prefix']]);
 //output: 1912000001,1912000002,1912000003
-//output: 2001000001,2001000002,2001000003
+//output: 2001000001,2001000002,2001000003`
 
-Example 09:
-Or any prefix change
+**Example 09:
+Or any prefix change**
 
-$id = UniqueIdGenerator::generate(['table' => 'products', 'length' => 6, 'prefix' => $prefix, 'reset_on_change'=>'prefix']]);
-//output: A00001,A00002,B00001,B00002
+`$id = UniqueIdGenerator::generate(['table' => 'products', 'length' => 6, 'prefix' => $prefix, 'reset_on_change'=>'prefix']]);
+//output: A00001,A00002,B00001,B00002`
 
-Example 10:
-Reset Suffix ID yearly 
+**Example 10:
+Reset Suffix ID yearly** 
 
-$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'suffix' =>date('y'),'reset_on_change'=>'suffix']]);
+`$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'suffix' =>date('y'),'reset_on_change'=>'suffix']]);
 //output: 0000000120,0000000220,0000000320
-//output: 0000000121,0000000221,0000000321
+//output: 0000000121,0000000221,0000000321`
 
-Example 11:
-Reset Prefix and Suffix (Both )ID yearly 
+**Example 11:
+Reset Prefix and Suffix (Both )ID yearly** 
 
-$prefix='INV';
-$prefix='Pro';
+**$prefix='INV';
+$prefix='Pro';**
 
 Example 12:
-$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 13, 'prefix' =>$prefix,'suffix' =>date('y'),'reset_on_change'=>'both']]);
+`$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 13, 'prefix' =>$prefix,'suffix' =>date('y'),'reset_on_change'=>'both']]);
 //output: INV0000000120,INV0000000220,INV0000000320
-//output: Pro0000000121,Pro0000000221,Pro0000000321
+//output: Pro0000000121,Pro0000000221,Pro0000000321`
