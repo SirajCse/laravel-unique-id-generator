@@ -1,13 +1,13 @@
-##README
+## README
+Generate custom Unique ID or Code (With Postfix or Suffix Or Both Or Only Unique Id) Or reset your ID after change of Postfix or Suffix Or Both  in laravel framework
 
-###Generate custom Unique ID or Code (With Postfix or Suffix Or Both Or Only Unique Id) Or reset your ID after change of Postfix or Suffix Or Both  in laravel framework
+# Installation
 
-#Installation
-composer require sirajcse/laravel-unique-id-generator
+    composer require sirajcse/laravel-unique-id-generator
 
-How to use it? You can use it in your controller code like as a helper or inside your model by defining a boot method.
+##### How to use it? You can use it in your controller code like as a helper or inside your model by defining a boot method.
 
-##@@Unique ID/Code Generatore Like@@@
+## @@Unique ID/Code Generatore Like@@@
 
 Inv-000001/12/21
 
@@ -20,16 +20,16 @@ Inv-000001/12/21
     uniqueId=000001
 
 
-######Default field Default field value id; [like 'field'=>'id'] If need 'code' field in a table; 'field'=>'code'
-######Prefix Or Suffix Default Value Prefix=>'' or Suffix=>'';
-######Reset On Change If you want to reset value at the beginning of every prefix or suffix or both changes then set it value; [reset_on_change has 4 option prefix,suffix,both,false] Default Value reset_on_change= false;
+###### Default field Default field value id; [like 'field'=>'id'] If need 'code' field in a table; 'field'=>'code'
+###### Prefix Or Suffix Default Value Prefix=>'' or Suffix=>'';
+###### Reset On Change If you want to reset value at the beginning of every prefix or suffix or both changes then set it value; [reset_on_change has 4 option prefix,suffix,both,false] Default Value reset_on_change= false;
 
-##Example with controller
+## Example with controller
 
     Import ID generator for Prefix
     use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
-###For Prefix
+### For Prefix
 
     public function store(Request $request){
         $id = UniqueIdGenerator::generate(['table' => 'todos', 'length' => 6, 'prefix' => date('y')]);
@@ -39,7 +39,7 @@ Inv-000001/12/21
         $todo->save();
     }
 
-###For Suffix
+### For Suffix
 
     public function store(Request $request){
         $id = UniqueIdGenerator::generate(['table' => 'todos', 'length' => 6, 'suffix' => date('y')]);
@@ -59,9 +59,9 @@ Inv-000001/12/21
         $todo->save();
     }
 
-###N.B: If you generate ID to the table id field then you must have to set the id field as fillable and public $incrementing = false; inside your model.
+### N.B: If you generate ID to the table id field then you must have to set the id field as fillable and public $incrementing = false; inside your model.
 
-###Example with the model
+### Example with the model
 
 In your model add a boot method. The ID will automatically generate when a new record will be added.
 Associative array for 'prefix', 'suffix' add if needed
@@ -73,7 +73,7 @@ Associative array for 'prefix', 'suffix' add if needed
     }); 
     }
 
-##Parameters
+## Parameters
 You must pass an associative array into generate function with table, length, prefix,suffix key.
             
             table = Your table name.
@@ -82,35 +82,35 @@ You must pass an associative array into generate function with table, length, pr
             prefix = Define your prefix,suffix. It can be a year prefix, month or any custom letter.
             reset_on_change = Optional, default false. If you want to reset id from 1 on prefix,suffix or both change then set it prefix,suffix,both,false.
     
-Example: 01
+#### Example: 01
 
     $config = [ 'table' => 'todos', 'length' => 6, 'prefix' => date('y') 'suffix' => '' ];
     // now use it $id = UniqueIdGenerator::generate($config);
 
 
-####Example 01: Only unique id/code with out Prefix, Suffix
+#### Example 01: Only unique id/code with out Prefix, Suffix
 // use within single line code
 
     $id = UniqueIdGenerator::generate(['table' => 'todos', 'length' => 6]);
     // output: 000001, 0000002
 
-####Example 02: INV-000001 for prefix string.
+#### Example 02: INV-000001 for prefix string.
  Your field must be varchar.
 
     $id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'prefix' =>'INV-']);
     //output: INV-000001 ,INV-000002
 
-####Example 03: 000001/2021 for suffix string. Your field must be varchar.
+#### Example 03: 000001/2021 for suffix string. Your field must be varchar.
 
     $id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'suffix' =>date('/Y')]);
     //output: 00001/2021, 00002/2021 
 
-####Example 04: INV-000001/2021 for prefix string. Your field must be varchar.
+#### Example 04: INV-000001/2021 for prefix string. Your field must be varchar.
         
     `$id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 14,'prefix' =>'INV-', 'suffix' =>date('/Y')]);
     //output: INV-00001/2021, INV-00002/2021`
 
-####Example 05: By default (ID field),
+#### Example 05: By default (ID field),
  this package works on the ID field. You can set another field to generate an ID. Make sure your selected field must be unique and also proper data type.
 
     $id = UniqueIdGenerator::generate(['table' => 'products','field'=>'pid', 'length' => 6, 'prefix' =>date('P')]);
@@ -122,7 +122,7 @@ Example: 01
     If you want to reset your ID from 1 on every suffix changes then pass reset_on_change => 'suffix' 
     If you want to reset your ID from 1 on every prefix and suffix (both) changes then pass reset_on_change => 'both'___
 
-Example 07: Reset Prefix ID yearly
+#### Example 07: Reset Prefix ID yearly
 
     $id = UniqueIdGenerator::generate(['table' => 'invoices', 'length' => 10, 'prefix' =>date('y'), 'reset_on_change'=>'prefix']);
     //output: 2000000001,2000000002,2000000003
