@@ -1,6 +1,6 @@
 {
     "name": "sirajcse/laravel-unique-id-generator",
-    "description": "Generate custom ID or Code (Postfix or Suffix Or Both) in laravel framework",
+    "description": "Generate custom Unique ID or Code (With Pretfix or Suffix Or Both Or Only Unique Id) Or reset your ID after change of Pretfix or Suffix Or Both  in laravel framework",
     "authors": [
         {
             "name": "Md. Siraj-Ud-Doulla",
