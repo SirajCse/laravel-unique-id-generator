@@ -1,5 +1,9 @@
 ## README
+<<<<<<< HEAD
 Generate custom Unique ID or Code (With Pretfix or Suffix Or Both Or Only Unique Id) Or reset your ID after change of Pretfix or Suffix Or Both  in laravel framework
+=======
+Generate custom Unique ID or Code (With Postfix or Suffix Or Both Or Only Unique Id) Or reset your ID after change of Postfix or Suffix Or Both  in laravel framework
+>>>>>>> a0a018aa8fb270ba3f4670d623acefd4d082cac0
 
 # Installation
 
@@ -97,7 +101,11 @@ You must pass an associative array into generate function with table, length, pr
 #### Example: 01
 
     $config = [ 'table' => 'todos', 'length' => 6, 'prefix' => date('y') 'suffix' => '' ];
+<<<<<<< HEAD
     // now use it $id = UniqueIdGenerator::generate($coFnfig);
+=======
+    // now use it $id = UniqueIdGenerator::generate($config);
+>>>>>>> a0a018aa8fb270ba3f4670d623acefd4d082cac0
 
 
 #### Example 02: Only unique id/code with out Prefix, Suffix
