@@ -1,11 +1,10 @@
 ## README
 
 
->>>HEAD
-Generate custom Unique ID or Code (With Prefix or Suffix Or Both Or Only Unique Id) Or reset your ID after change of Prefix or Suffix Or Both  in laravel framework
+>>>
+##Generate custom Unique ID or Code (With Prefix or Suffix Or Both Or Only Unique Id) Or reset your ID after change of Prefix or Suffix Or Both  in laravel framework
 =======
-Generate custom Unique ID or Code (With Prefix or Suffix Or Both Or Only Unique Id) Or reset your ID after change of Prefix or Suffix Or Both  in laravel framework
->>>>>>> a0a018aa8fb270ba3f4670d623acefd4d082cac0
+
 
 # Installation
 
