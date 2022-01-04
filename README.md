@@ -102,11 +102,7 @@ You must pass an associative array into generate function with table, length, pr
 #### Example: 01
 
     $config = [ 'table' => 'todos', 'length' => 6, 'prefix' => date('y') 'suffix' => '' ];
-<<<<<<< HEAD
     // now use it $id = UniqueIdGenerator::generate($coFnfig);
-=======
-    // now use it $id = UniqueIdGenerator::generate($config);
->>>>>>> a0a018aa8fb270ba3f4670d623acefd4d082cac0
 
 
 #### Example 02: Only unique id/code with out Prefix, Suffix
