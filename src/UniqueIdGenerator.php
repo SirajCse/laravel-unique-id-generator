@@ -131,7 +131,9 @@ class UniqueIdGenerator
             
             $queryResult = DB::select($maxQuery);
             $maxFullId = $queryResult[0]->maxid;
-            $maxId = substr($maxFullId, $prefixLength,$length-$suffixLength);
+            
+           // $maxId = substr($maxFullId, $prefixLength,$length-$suffixLength);
+            $maxId = substr($maxFullId, $prefixLength,$idLength);
             return $prefix.str_pad((int)$maxId + 1, $idLength, '0', STR_PAD_LEFT).$suffix;
         } else {
             return $prefix . str_pad(1, $idLength, '0', STR_PAD_LEFT).$suffix;
